@@ -1,0 +1,42 @@
+#Absolute or relative path to the mgf file containing your experimental spectra
+mgf: "path/to/your/spectra.mgf"
+
+#Parameterfile used by Comet. resoucres/comet.params contains an example.
+#See http://comet-ms.sourceforge.net/parameters/ for information on each parameter
+comet-parameterfile: "resources/comet.params"
+
+#Algorithm to use for the prediction of tandem mass spectra.
+#Accepted values are 'pdeep' and 'prosit'
+msms-model: "pdeep"
+
+#Server address of the MSMS prediction model. You need to have a running instance of pDeep or Prosit accessible via the specified port.
+msms-model-address: "<your_pdeep_server>:<your_pdeep_port>/your/route"
+
+#Specify whether you want to consider neutral loss predictions (-NH3 and -H2O) when rescoring the PSMs.
+#This can sometimes give better results. There is no performance benefit from excluding neutral losses.
+predict-neutral-losses: "no"
+
+#Algorithm to use for the prediction of retention times.
+#Currently, the only accepted value is 'prosit', but there are rumors that the next version of pDeep will also support RT prediction.
+rt-model: "prosit"
+
+#Server address of the RT prediction model.
+#Only required if msms-model and rt-model are not the same.
+#This address must return a tab-separated list of the input peptides and their predicted retention times.
+rt-model-address: "<your_prosit_server>:<your_prosit_port>/your/route"
+
+#Collision energy used to acquire the experimental fragment spectra
+collision-energy: <integer>
+
+#Function by which the experimental spectra are compared to the predicted spectra of their PSMs.
+#Possible values are 'dot product' (recommended for IT data) and 'hyperscore' (recommended for FT data).
+score-function: "hyperscore"
+
+#Bin Size in m/z to be used when comparing experimental to predicted spectra.
+#Recommended values are 0.1 for IT data and 0.005 for FT data.
+binsize: 0.005
+
+#Directory to store the percolator output.
+#The output file will have the same name as the MGF input file, with the suffix '_percolator_peptides.tsv'
+#If absent, defaults to 'deepgrind_out'
+output_dir: "deepgrind_out"
