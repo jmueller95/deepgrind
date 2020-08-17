@@ -1,7 +1,7 @@
 #Absolute or relative path to the mgf file containing your experimental spectra
 mgf: "path/to/your/spectra.mgf"
 
-#Parameterfile used by Comet. resoucres/comet.params contains an example.
+#Parameterfile used by Comet. resources/comet.params contains an example.
 #See http://comet-ms.sourceforge.net/parameters/ for information on each parameter
 comet-parameterfile: "resources/comet.params"
 
