@@ -144,7 +144,7 @@ def calc_dot_product_and_ions(experimental_spectrum, predicted_spectrum, binsize
 
     while pred_index < len(predicted_mzs_sorted) and exp_index < len(experimental_spectrum['m/z array']):
         # Test if the two peaks lie close enough to one another to be counted
-        if abs(predicted_mzs_sorted[pred_index] - experimental_spectrum['m/z array'][exp_index]) < binsize:
+        if abs(predicted_mzs_sorted[pred_index] - experimental_spectrum['m/z array'][exp_index]) < binsize and predicted_intensities_sorted[pred_index]>0:
             # Add ion to set of matched b or y ions
             if predicted_ions_sorted[pred_index].startswith('y'):
                 # The splitting makes sure that neither fragments with different charge states nor neutral loss peaks are counted extra
